@@ -1,10 +1,24 @@
 package com.sefa.SpringBoot.student;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-
+//Entity is for hibernate
+@Entity
+//Table is for our Databes
+@Table
 public class Student {
 
-    private int id;
+    @Id
+    @SequenceGenerator(
+            name="student_sequence",
+            sequenceName="student_sequence",
+            allocationSize=1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_sequence"
+    )
+    private Long id;
     private String name;
     private int age;
     private String email;
@@ -13,7 +27,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(int id, String name, int age, String email, LocalDate dateOfBirth) {
+    public Student(Long id, String name, int age, String email, LocalDate dateOfBirth) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -39,11 +53,11 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
