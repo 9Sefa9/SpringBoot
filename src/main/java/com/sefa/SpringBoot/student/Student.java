@@ -2,6 +2,8 @@ package com.sefa.SpringBoot.student;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
+
 //Entity is for hibernate
 @Entity
 //Table is for our Databes
@@ -20,6 +22,7 @@ public class Student {
     )
     private Long id;
     private String name;
+    @Transient
     private int age;
     private String email;
     private LocalDate dateOfBirth;
@@ -27,10 +30,9 @@ public class Student {
     public Student() {
     }
 
-    public Student(Long id, String name, int age, String email, LocalDate dateOfBirth) {
+    public Student(Long id, String name, String email, LocalDate dateOfBirth) {
         this.id = id;
         this.name = name;
-        this.age = age;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
     }
@@ -46,9 +48,8 @@ public class Student {
                 '}';
     }
 
-    public Student(String name, int age, String email, LocalDate dateOfBirth) {
+    public Student(String name, String email, LocalDate dateOfBirth) {
         this.name = name;
-        this.age = age;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
     }
@@ -70,7 +71,7 @@ public class Student {
     }
 
     public int getAge() {
-        return age;
+        return Period.between(this.dateOfBirth,LocalDate.now()).getYears();
     }
 
     public void setAge(int age) {

@@ -18,11 +18,10 @@ public class StudentConfig {
     implementing this interface after the application context has been loaded.
      */
     @Bean
-    CommandLineRunner commandLineRunner(StudentRepository studentRepository){
+    public CommandLineRunner commandLineRunner(StudentRepository studentRepository){
         return args -> {
             Student mariam = new Student(
                     "Mariam",
-                    21,
                     "mariam.jamal@gmail.com",
                     LocalDate.of(2000, Month.JANUARY, 5)
             );
@@ -30,7 +29,6 @@ public class StudentConfig {
 
             Student john = new Student(
                     "John",
-                    21,
                     "john.jack@gmail.com",
                     LocalDate.of(1998, Month.APRIL, 11)
             );
