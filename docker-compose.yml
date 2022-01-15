@@ -1,0 +1,18 @@
+services:
+  amigoscode-mysql:
+    image: mysql:latest 
+    cap_add:
+      - SYS_NICE
+    ports:
+      - "3306:3306"
+      
+    environment:
+      MYSQL_ROOT_PASSWORD: blup
+      MYSQL_DATABASE: spring
+      MYSQL_USER: Database
+      MYSQL_PASSWORD: 31213
+  
+  amigoscode-adminer:
+    image: adminer
+    ports:
+      - "8080:8080"

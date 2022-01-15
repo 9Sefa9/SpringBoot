@@ -19,6 +19,8 @@ public class StudentController {
     //Autowired: We say that StudentService instance should
     // autowired for studentService in constructore parameter.
     // It enables you to inject the object dependency implicitly.
+    //Otherwise, the "this.studentService" would be null since it has to be instantiated.
+    
     @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
